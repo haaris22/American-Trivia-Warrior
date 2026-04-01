@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 
@@ -28,7 +29,6 @@ function Finance() {
   return <div><h3>Finance Projects</h3><p>Finance-related content here.</p></div>;
 }
 
-import { Link, Outlet } from 'react-router-dom';
 
 function Fun() {
   return (
