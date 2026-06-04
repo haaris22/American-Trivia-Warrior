@@ -1,13 +1,33 @@
 import json
 import os
+from collections import defaultdict
 from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, constr
+
+# Max Stage 3 validate calls per IP per day
+_VALIDATE_LIMIT = 50
+_validate_counts: dict[str, int] = defaultdict(int)
+_validate_day: str = ""
+
+
+def _use_gemini_validate(request: Request) -> bool:
+    """Returns True if this IP still has Gemini validate calls remaining today."""
+    global _validate_day, _validate_counts
+    today = date.today().isoformat()
+    if today != _validate_day:
+        _validate_day = today
+        _validate_counts.clear()
+    ip = request.client.host
+    if _validate_counts[ip] >= _VALIDATE_LIMIT:
+        return False
+    _validate_counts[ip] += 1
+    return True
 
 for _env in ["secrets.env", ".env"]:
     if Path(_env).exists():
@@ -68,7 +88,8 @@ class ValidateRequest(BaseModel):
 
 
 @app.post("/api/validate")
-def validate_answer(req: ValidateRequest):
+def validate_answer(req: ValidateRequest, request: Request):
+    use_gemini = _use_gemini_validate(request)
     today = date.today().isoformat()
     cached = get_today_course(today)
     if not cached:
@@ -103,15 +124,17 @@ def validate_answer(req: ValidateRequest):
     if req.user_answer.strip().lower() == correct.strip().lower():
         return {"correct": True}
 
-    try:
-        is_correct = validate_free_text_answer(
-            question=question["question"],
-            correct_answer=correct,
-            user_answer=req.user_answer,
-        )
-    except Exception:
-        # Graceful fallback: simple contains check
+    if not use_gemini:
         is_correct = correct.lower() in req.user_answer.lower() or req.user_answer.lower() in correct.lower()
+    else:
+        try:
+            is_correct = validate_free_text_answer(
+                question=question["question"],
+                correct_answer=correct,
+                user_answer=req.user_answer,
+            )
+        except Exception:
+            is_correct = correct.lower() in req.user_answer.lower() or req.user_answer.lower() in correct.lower()
 
     return {"correct": is_correct}
 
