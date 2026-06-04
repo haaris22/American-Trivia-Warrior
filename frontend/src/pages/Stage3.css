@@ -1,0 +1,55 @@
+/* Stage 3 — Grip Strength — Red */
+.stage3 { background: var(--bg); }
+
+.stage3__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.stage3__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stage3__title {
+  font-size: 2.2rem;
+  color: var(--red-bright);
+  text-shadow: 0 0 20px rgba(204, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.stage3__phase {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.stage3__no-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.stage3__infinity {
+  font-size: 2.4rem;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.stage3__card {
+  margin-top: 16px;
+  border-top: 3px solid var(--red);
+}
