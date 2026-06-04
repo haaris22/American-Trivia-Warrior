@@ -37,7 +37,7 @@ app = FastAPI(title="American Trivia Warrior API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://american-trivia-warrior.vercel.app"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
