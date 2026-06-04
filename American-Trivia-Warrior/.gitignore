@@ -1,0 +1,14 @@
+.env
+secrets.env
+__pycache__/
+*.pyc
+*.pyo
+data/*.db
+!data/trivia.db
+node_modules/
+frontend/build/
+.DS_Store
+*.egg-info/
+dist/
+.venv/
+venv/

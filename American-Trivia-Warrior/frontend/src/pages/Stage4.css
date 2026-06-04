@@ -1,0 +1,44 @@
+/* Stage 4 — Mt. Midoriyama — Gold */
+.stage4 { background: var(--bg); }
+
+.stage4__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.stage4__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stage4__title {
+  font-size: 2.2rem;
+  color: var(--gold);
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.5),
+    3px 3px 0 rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.stage4__tier {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 215, 0, 0.5);
+  margin-top: 5px;
+}
+
+.stage4__tier span { color: var(--gold); font-weight: 700; }
+
+.stage4__card {
+  margin-top: 16px;
+  border-top: 3px solid var(--gold);
+}

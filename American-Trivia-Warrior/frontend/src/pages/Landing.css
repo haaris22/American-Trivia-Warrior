@@ -1,0 +1,116 @@
+.landing {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 620px;
+  width: 100%;
+}
+
+/* ── Hero ──────────────────────────────────────────────── */
+.landing__eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.45em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.landing__eyebrow span {
+  color: var(--gold);
+}
+
+.landing__title {
+  font-size: clamp(4.5rem, 16vw, 7.5rem);
+  line-height: 0.88;
+  color: var(--red);
+  text-shadow:
+    0 0 40px rgba(204, 0, 0, 0.45),
+    4px 4px 0 rgba(0, 0, 0, 0.6);
+  margin: 0 0 10px;
+}
+
+.landing__subtitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+  color: var(--blue);
+  text-shadow: 0 0 12px rgba(0, 112, 224, 0.4);
+  margin-bottom: 36px;
+}
+
+/* ── Stage list ────────────────────────────────────────── */
+.landing__stages {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  overflow: hidden;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.landing__stage-item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.landing__stage-item:last-child { border-bottom: none; }
+.landing__stage-item:hover { background: var(--card-2); }
+
+.landing__stage-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.landing__stage-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.landing__stage-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Stage accent colours on the number */
+.landing__stage-item:nth-child(1) .landing__stage-num { color: var(--blue); }
+.landing__stage-item:nth-child(2) .landing__stage-num { color: var(--purple); }
+.landing__stage-item:nth-child(3) .landing__stage-num { color: var(--red); }
+.landing__stage-item:nth-child(4) .landing__stage-num { color: var(--gold); }
+
+/* ── Rules ─────────────────────────────────────────────── */
+.landing__rules {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.landing__rules strong { color: var(--text); }
+
+.landing__cta {
+  font-size: 1.2rem;
+  padding: 15px 56px;
+}

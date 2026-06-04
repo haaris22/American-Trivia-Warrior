@@ -1,0 +1,61 @@
+.winner {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.winner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 500px;
+}
+
+.winner__stars {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.6em;
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
+  margin-bottom: 16px;
+}
+
+.winner__badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  border: 1.5px solid rgba(255, 215, 0, 0.35);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.winner__title {
+  font-size: clamp(3.5rem, 14vw, 6.5rem);
+  line-height: 0.88;
+  color: var(--gold);
+  text-shadow:
+    0 0 60px rgba(255, 215, 0, 0.4),
+    4px 4px 0 rgba(0, 0, 0, 0.6);
+  margin-bottom: 24px;
+}
+
+.winner__crown {
+  font-size: 3.5rem;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.5));
+}
+
+.winner__sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.winner__cta { font-size: 1rem; padding: 11px 40px; }

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────── */
+:root {
+  --bg:          #060b17;
+  --card:        #0d1a2e;
+  --card-2:      #0f2240;
+  --red:         #cc0000;
+  --red-bright:  #ff3333;
+  --blue:        #0070e0;
+  --blue-dim:    #004499;
+  --gold:        #ffd700;
+  --gold-pale:   #ffe94d;
+  --purple:      #7b4fff;
+  --white:       #ffffff;
+  --text:        #e2f0ff;
+  --text-dim:    #7ea8cc;
+  --text-muted:  #3d5a7a;
+  --border:      rgba(255, 255, 255, 0.07);
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(0, 112, 224, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 112, 224, 0.6); }
+
+/* ── Shared layout ─────────────────────────────────────── */
+.stage-wrapper {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 60px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ── Shared buttons ────────────────────────────────────── */
+button { font-family: 'Rajdhani', sans-serif; font-weight: 700; cursor: pointer; border: none; outline: none; transition: all 0.15s ease; }
+button:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+  padding: 13px 40px;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  box-shadow: 0 0 24px rgba(204, 0, 0, 0.35);
+}
+.btn-primary:hover { background: var(--red-bright); box-shadow: 0 0 32px rgba(204, 0, 0, 0.55); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dim);
+  padding: 11px 32px;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 6px;
+}
+.btn-secondary:hover { border-color: var(--text-dim); color: var(--text); }
+
+/* ── Loading / error states ────────────────────────────── */
+.loading, .error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 14px;
+  text-align: center;
+  padding: 24px;
+}
+.loading h2 { font-size: 2.2rem; color: var(--blue); }
+.loading p  { color: var(--text-muted); font-size: 1rem; }
+.error h2   { font-size: 2rem; color: var(--red); }
+.error p    { color: var(--text-muted); }

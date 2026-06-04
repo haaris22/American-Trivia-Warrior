@@ -1,0 +1,55 @@
+.game-over {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-over__bg-text {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(8rem, 28vw, 18rem);
+  color: rgba(204, 0, 0, 0.06);
+  letter-spacing: 0.1em;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.game-over__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.game-over__title {
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  color: var(--red);
+  text-shadow:
+    0 0 40px rgba(204, 0, 0, 0.5),
+    4px 4px 0 rgba(0, 0, 0, 0.6);
+  margin-bottom: 12px;
+}
+
+.game-over__detail {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.game-over__sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.game-over__cta { font-size: 1.1rem; padding: 13px 48px; }

@@ -1,0 +1,58 @@
+.progress-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 8px 0 16px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.progress-bar__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress-bar__circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--text-muted);
+  background: var(--card);
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.progress-bar__node--done .progress-bar__circle {
+  background: rgba(51, 204, 51, 0.1);
+  border-color: #33cc33;
+  color: #33cc33;
+}
+
+.progress-bar__node--active .progress-bar__circle {
+  background: var(--card-2);
+  color: var(--text);
+}
+
+.progress-bar__node--upcoming .progress-bar__circle {
+  opacity: 0.4;
+}
+
+.progress-bar__label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.progress-bar__node--active .progress-bar__label { opacity: 1; }
+.progress-bar__node--done .progress-bar__label { color: #33cc33; opacity: 0.8; }
