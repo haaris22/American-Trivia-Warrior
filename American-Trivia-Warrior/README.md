@@ -11,24 +11,22 @@ pip install -r requirements.txt
 ```
 
 ### 2. Configure environment variables
-```bash
-cp .env.example .env
-```
+
 Fill in `.env`:
-- `GEMINI_API_KEY` — from [aistudio.google.com](https://aistudio.google.com) (free)
-- `KAGGLE_USERNAME` + `KAGGLE_KEY` — from [kaggle.com](https://kaggle.com) → Account → API
+- `GEMINI_API_KEY` — from [aistudio.google.com](https://aistudio.google.com) 
+- `KAGGLE_API_TOKEN` — from [kaggle.com](https://kaggle.com) 
 
 ### 3. Load datasets (run once)
 ```bash
 python load_data.py
 ```
-Downloads ~200k Jeopardy questions + OpenTriviaQA via kagglehub. Takes a few minutes.
-
+Downloads ~200k Jeopardy questions + OpenTriviaQA dataset via kagglehub. ~ few seconds
 ### 4. Start backend
 ```bash
 uvicorn backend.server:app --reload
 ```
-On first start, the server generates today's course (Gemini distractor batch — ~30s).
+On first start, the server generates today's course randomly picking the trivia question associated with each of the 28 course obstacle. 
+For each question we prompt Gemini to create 3 MC sets of incorrect distractor answers relevant as of the current day. The 3 sets are quoted as: easy, medium and hard differing based on how outlandish the distractors are compared to the correct answer. (Uses Gemini flash 3.5 — ~30s).
 
 ### 5. Start frontend
 ```bash
@@ -37,7 +35,9 @@ npm install
 npm start
 ```
 
-App runs at `http://localhost:3000`.
+Local: App runs at `http://localhost:3000`.
+
+Note that in stage 3 we have non-MC free-text questions meant to represnt the hardest stage of the "course". The free text responses (capped at 300 characters) are assessed by Gemini against the correct answer to account for typos/extra explanations and such.
 
 ---
 
@@ -64,5 +64,5 @@ App runs at `http://localhost:3000`.
 
 ## Deployment
 
-- **Frontend:** Vercel — set `REACT_APP_API_URL` to your Render backend URL
-- **Backend:** Render — add `GEMINI_API_KEY`, `KAGGLE_USERNAME`, `KAGGLE_KEY` as env vars. Set start command: `python load_data.py && uvicorn backend.server:app --host 0.0.0.0 --port $PORT`
+- **Frontend:** Vercel 
+- **Backend:** Render 
