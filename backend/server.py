@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 from collections import defaultdict
@@ -39,17 +40,21 @@ from backend.database import get_today_course
 from backend.gemini_client import validate_free_text_answer
 
 
+async def _warm_course():
+    print("Building today's course (or loading from cache)...")
+    try:
+        await asyncio.to_thread(get_or_build_course)
+        print("Course ready.")
+    except Exception as e:
+        print(f"WARNING: Course generation failed: {e}")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     if not Path("data/trivia.db").exists():
         print("WARNING: data/trivia.db not found. Run 'python load_data.py' first.")
     else:
-        print("Building today's course (or loading from cache)...")
-        try:
-            get_or_build_course()
-            print("Course ready.")
-        except Exception as e:
-            print(f"WARNING: Course generation failed: {e}")
+        asyncio.create_task(_warm_course())
     yield
 
 
