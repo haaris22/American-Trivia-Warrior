@@ -16,7 +16,7 @@ _MODEL = "gemini-3.5-flash"
 _JSON_CONFIG = types.GenerateContentConfig(response_mime_type="application/json")
 
 
-def _call(prompt: str, retries: int = 3) -> str:
+def _call(prompt: str, retries: int = 5) -> str:
     for attempt in range(retries):
         try:
             response = _client.models.generate_content(
@@ -27,7 +27,7 @@ def _call(prompt: str, retries: int = 3) -> str:
             return response.text
         except Exception as e:
             if attempt < retries - 1:
-                time.sleep(2 ** attempt)
+                time.sleep(5 * (2 ** attempt))  # 5s, 10s, 20s, 40s
             else:
                 raise e
 
