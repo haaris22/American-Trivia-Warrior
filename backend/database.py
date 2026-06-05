@@ -2,6 +2,8 @@ import re
 import sqlite3
 from pathlib import Path
 
+
+### TODO: Remove this and design a more robust topic fingerprinting system if we want to enforce topic diversity in Stage 3 and beyond.
 _TOPIC_SKIP = frozenset({
     'The', 'This', 'That', 'What', 'Which', 'Who', 'Where', 'When', 'How',
     'His', 'Her', 'Its', 'Their', 'Our', 'Your', 'My', 'And', 'But', 'For',

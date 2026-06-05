@@ -7,6 +7,7 @@ caches the full course in SQLite. Same course for everyone on a given day.
 
 import json
 import random
+import time
 from datetime import date
 
 from backend.database import (
@@ -94,6 +95,8 @@ def _batch_generate_jeopardy(questions: list[dict]) -> dict:
         return {}
     results = {}
     for i in range(0, len(questions), BATCH_SIZE):
+        if i > 0:
+            time.sleep(3)
         batch = questions[i: i + BATCH_SIZE]
         payload = [{"id": str(q["id"]), "question": q["question"], "answer": q["answer"]} for q in batch]
         try:
@@ -109,6 +112,8 @@ def _batch_generate_opentrivia(questions: list[dict]) -> dict:
         return {}
     results = {}
     for i in range(0, len(questions), BATCH_SIZE):
+        if i > 0:
+            time.sleep(3)
         batch = questions[i: i + BATCH_SIZE]
         payload = [
             {
